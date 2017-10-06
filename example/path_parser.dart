@@ -40,18 +40,23 @@ main() {
 
   // TODO m.getOne('todos.0');
 
-  /* TODO
-  print(PathParser.parseField('todos.time'.codeUnits.toList()));
-  print(PathParser.parse('todos.time'));
-  print(PathParser.parseField('todos{'.codeUnits.toList()));
-  print(PathParser.parseSubscript('[5]'.codeUnits.toList()));
-  print(PathParser.parseSubscript('[5:10]'.codeUnits.toList()));
-  print(PathParser.parse('todos[5]'));
-  print(PathParser.parseSubDocument('{name,time}'.codeUnits.toList()));
-  print(PathParser.parse('todos.{name,time}'));
-  print(PathParser.parseSubDocument('{name,time.{seconds,minutes}}'.codeUnits.toList()));
-  print(PathParser.parse('todos.{name,time.{seconds,minutes}}'));
-  */
+  // TODO print(PathParser.parse('todos.{name,location.{address[0],zipcode}}'));
 
-  print(PathParser.parse('todos.{name,location.{address[0],zipcode}}'));
+  // TODO print(compile('todos.name'));
+  // TODO print(compile('todos.name[0]'));
+  // TODO print(compile('todos[0].name'));
+  // TODO print(compile('todos.{name,description}'));
+  // TODO print(compile('todos.{name,location.{address[0],zipcode}}'));
+
+  // TODO print(compile('{todos,name}'));
+
+  print(compile('''todo[0].{
+    time.{
+      seconds,
+      minutes,
+    },
+    done}
+  '''));
+
+  print(PathParser.parse('''{  todos,  name,}'''));
 }

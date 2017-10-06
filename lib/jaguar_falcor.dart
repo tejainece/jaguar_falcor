@@ -9,5 +9,3 @@ library jaguar_falcor;
 export 'src/jaguar_falcor_base.dart';
 export 'src/path/path.dart';
 export 'src/getter/getter.dart';
-
-// TODO: Export any libraries intended for clients of this package.

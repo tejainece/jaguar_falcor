@@ -11,7 +11,7 @@ class Model {
   final Map<String, dynamic> cache = <String, dynamic>{};
 
   Model({Map<String, dynamic> cache}) {
-    if(cache != null) this.cache.addAll(cache);
+    if (cache != null) this.cache.addAll(cache);
   }
 
   /// Get data for a single [path]

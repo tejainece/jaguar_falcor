@@ -19,7 +19,7 @@ main() {
       '2': {
         'name': "ng-Vegas",
         'description':
-        "Two days jam-packed with Angular goodness with a focus on Angular 2",
+            "Two days jam-packed with Angular goodness with a focus on Angular 2",
         'location': {
           'city': "Las Vegas",
           'state': "Nevada",
@@ -28,7 +28,7 @@ main() {
       '3': {
         'name': "Midwest JS",
         'description':
-        "Midwest JS is a premier technology conference focused on the JavaScript ecosystem.",
+            "Midwest JS is a premier technology conference focused on the JavaScript ecosystem.",
         'location': {
           'city': "Minneapolis",
           'state': "Minnesota",
@@ -37,7 +37,7 @@ main() {
       '4': {
         'name': "NodeConf",
         'description':
-        "NodeConf is the longest running community driven conference for the Node community.",
+            "NodeConf is the longest running community driven conference for the Node community.",
         'location': {
           'city': "Walker Creek Ranch",
           'state': "California",
@@ -46,6 +46,8 @@ main() {
     },
     'data': 'hello',
   };
+
+  print(Getter.get(compile('events.0.{*,location.state}'), data));
   print(Getter.get(<String, dynamic>{
     'data': true,
     'events': {

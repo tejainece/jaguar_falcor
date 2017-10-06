@@ -31,12 +31,24 @@ main() {
     ],
     'data': 'hello',
   };
+  print(Getter.get(compile('todos[0]'), data));
   print(Getter.get(<String, dynamic>{
     'data': true,
     'todos': 0,
   }, data));
+
+  print(Getter.get(compile('todos[1:4]'), data));
   print(Getter.get(<String, dynamic>{
     'data': true,
-    'todos': new Range(1, 5),
+    'todos': new Range(1, 4),
+  }, data));
+
+  print(Getter.get(compile('todos[2:5].{name,done}'), data));
+  print(Getter.get(<String, dynamic>{
+    'data': true,
+    'todos': array(new Range(2, 5), {
+      'name': true,
+      'done': true,
+    }),
   }, data));
 }
