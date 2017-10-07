@@ -96,6 +96,8 @@ class PathParser {
     String field = new String.fromCharCodes(chars, 1, i);
     chars.removeRange(0, i + 1);
 
+    if (field == ':') return new Range(null, null);
+
     final int subscript = int.parse(field, onError: (_) => null);
     if (subscript is int) return subscript;
 
@@ -103,14 +105,17 @@ class PathParser {
     if (ranges.length != 2) throw new Exception('Invalid path!');
 
     final int start = int.parse(ranges.first, onError: (_) => null);
-    if (start is! int) throw new Exception('Invalid path!');
+    if (start == null) {
+      if (ranges.first.isNotEmpty) throw new Exception('Invalid path!');
+    } else if (start < 0) throw new Exception('Invalid path!');
 
     final int end = int.parse(ranges.last, onError: (_) => null);
-    if (end is! int) throw new Exception('Invalid path!');
+    if (end == null) {
+      if (ranges.last.isNotEmpty) throw new Exception('Invalid path!');
+    } else if (end < 0) throw new Exception('Invalid path!');
 
-    if (start < 0 || end < 0) throw new Exception('Invalid path!');
-
-    if (end <= start) throw new Exception('Invalid path!');
+    if ((start != null && end != null) && end <= start)
+      throw new Exception('Invalid path!');
 
     return new Range(start, end);
   }
@@ -217,7 +222,7 @@ class PathParser {
 
     while (chars.length > 0) {
       // Trim whitespace
-      if(_removeLeadingWhitespace(chars) != 0) continue;
+      if (_removeLeadingWhitespace(chars) != 0) continue;
 
       final int char = chars.first;
 
@@ -278,7 +283,7 @@ class PathParser {
       }
       break;
     }
-    if(ret > 0) chars.removeRange(0, ret);
+    if (ret > 0) chars.removeRange(0, ret);
     return ret;
   }
 }

@@ -6,6 +6,6 @@
 /// More dartdocs go here.
 library jaguar_falcor;
 
-export 'src/jaguar_falcor_base.dart';
+export 'src/model.dart';
 export 'src/path/path.dart';
 export 'src/getter/getter.dart';

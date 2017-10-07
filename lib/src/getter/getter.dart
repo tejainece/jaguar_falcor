@@ -27,10 +27,11 @@ class Getter {
             ret[field] = dv[value];
           }
         } else if (value is Range) {
-          if (value.start < dv.length) {
-            int len = value.end;
-            if (len > dv.length) len = dv.length;
-            ret[field] = dv.sublist(value.start, len);
+          int start = value.start ?? 0;
+          if (start < dv.length) {
+            int end = value.end ?? dv.length;
+            if (end > dv.length) end = dv.length;
+            ret[field] = dv.sublist(start, end);
           }
         } else if (value is ArrayLookup) {
           ret[field] = arrayLookup(value, dv);
@@ -59,14 +60,16 @@ class Getter {
   static List arrayLookup(ArrayLookup lookup, List data) {
     final Range range = lookup.range;
 
-    if (range.start >= data.length) return null;
+    int start = range.start ?? 0;
+
+    if (start >= data.length) return null;
 
     final ret = [];
 
-    int len = range.end;
+    int len = range.end ?? data.length;
     if (len > data.length) len = data.length;
 
-    for (int i = range.start; i < len; i++) {
+    for (int i = start; i < len; i++) {
       ret.add(get(lookup.path, data[i]));
     }
 

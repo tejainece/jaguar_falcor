@@ -2,10 +2,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-
-class PathValue {
-  // TODO
-}
+import 'package:jaguar_falcor/jaguar_falcor.dart';
 
 class Model {
   final Map<String, dynamic> cache = <String, dynamic>{};
@@ -14,25 +11,18 @@ class Model {
     if (cache != null) this.cache.addAll(cache);
   }
 
-  /// Get data for a single [path]
-  dynamic getOne(String path) {
-    // TODO
-  }
-
-  /// Set [value] for a single [path]
-  Future setOne(String path, dynamic value) {
-    // TODO
-  }
-
   dynamic exec(String path, List args) {
     // TODO
   }
 
-  dynamic get(List<String> paths) {
-    // TODO
+  FutureOr<dynamic> get(String path) {
+    final Map compiled = compile(path);
+    return Getter.get(compiled, cache);
   }
 
+  /* TODO
   dynamic set(List<PathValue> values) {
     // TODO
   }
+  */
 }
