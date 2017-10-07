@@ -20,4 +20,3 @@ A falcor.js like efficient data-store and data-fetching library for Dart
     - [ ] MongoDB
     - [ ] PostgreSQL
 - [ ] Caching
-- [ ] Consume whitespaces in query parser
